@@ -29,5 +29,6 @@ foreach ($bucket in $buckets.GetEnumerator()) {
 }
 
 scoop update
+scoop update *
 scoop --version
 scoop status
