@@ -24,6 +24,8 @@ $prefix = "$($env:CLI_PREFIX)"
 
 if ($prefix -eq "") {
     $prefix = "https://raw.githubusercontent.com/developing-today/cli/main"
+} else {
+    Write-Verbose -Verbose "Using custom prefix $prefix"
 }
 
 $scoop = Invoke-RestMethod "$prefix/Initialize-Scoop.ps1"
