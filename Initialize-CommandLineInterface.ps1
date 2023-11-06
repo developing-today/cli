@@ -6,6 +6,11 @@ if ($prefix -eq "") {
     $prefix = "https://raw.githubusercontent.com/developing-today/cli/main"
 }
 
-Invoke-RestMethod "$prefix/Initialize-Scoop.ps1" | Invoke-Expression
-Invoke-RestMethod "$prefix/Initialize-CharmApplication.ps1" | Invoke-Expression
-Invoke-RestMethod "$prefix/Initialize-DevelopingTodayApplications.ps1" | Invoke-Expression
+$scoop = Invoke-RestMethod "$prefix/Initialize-Scoop.ps1"
+Invoke-Expression $scoop
+
+$charmApplication = Invoke-RestMethod "$prefix/Initialize-CharmApplications.ps1"
+Invoke-Expression $charmApplication
+
+$developingTodayApplications = Invoke-RestMethod "$prefix/Initialize-DevelopingTodayApplications.ps1"
+Invoke-Expression $developingTodayApplications
