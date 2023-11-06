@@ -8,8 +8,7 @@ $scriptUrl = "$baseUrl/$repo/$ref/$file"
 Invoke-RestMethod $scriptUrl | Invoke-Expression
 # all done
 ```
-- Run this as current user on a windows machine.
-  - scoop
-    - all known preset buckets
-    - this scoop bucket
-    - all packages in this scoop bucket
+```
+scoop bucket known | ForEach-Object { scoop bucket add $_ }
+# all done
+```

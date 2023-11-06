@@ -15,9 +15,7 @@ scoop install aria2
 
 scoop config aria2-enabled true
 
-scoop bucket known | ForEach-Object { scoop bucket add $_ }
-
-$currentBuckets = scoop bucket list | ForEach-Object { $_ }
+$currentBuckets = scoop bucket list | ForEach-Object { $_.Name }
 
 foreach ($bucket in $buckets.GetEnumerator()) {
     $name = $bucket.Key
