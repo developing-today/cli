@@ -14,18 +14,14 @@ function CheckLastExitCode {
     param ([int[]]$SuccessCodes = @(0))
 
     if (!$?) {
-        if (Test-Path variable://LastExitCode) {
-            $LastExitCode = $LastExitCode
-        } else {
+        if (-not (Test-Path variable://LastExitCode)) {
             $LastExitCode = 1
         }
         Write-Host "Last CMD failed $LastExitCode" -ForegroundColor Red
         exit
     }
 
-    if (Test-Path variable://LastExitCode) {
-        $LastExitCode = $LastExitCode
-    } else {
+    if (-not (Test-Path variable://LastExitCode)) {
         $LastExitCode = 0
     }
 
