@@ -4,7 +4,7 @@ $rawContentUrl = "https://raw.githubusercontent.com"
 $repo = "developing-today/cli"
 $ref = "main"
 $file = "Initialize-CommandLineInterface.ps1"
-$initScript = "$rawContentUrl/$thisRepo/$ref/$file"
+$initScript = "$rawContentUrl/$repo/$ref/$file"
 Invoke-RestMethod $initScript | Invoke-Expression
 # all done
 ```
