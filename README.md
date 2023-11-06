@@ -1,7 +1,7 @@
 ```
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 $rawContentUrl = "https://raw.githubusercontent.com"
-$thisRepo = "developing-today/cli"
+$repo = "developing-today/cli"
 $ref = "main"
 $file = "Initialize-CommandLineInterface.ps1"
 $initScript = "$rawContentUrl/$thisRepo/$ref/$file"
