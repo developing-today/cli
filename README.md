@@ -4,8 +4,8 @@ $rawContentUrl = "https://raw.githubusercontent.com"
 $repo = "developing-today/cli"
 $ref = "main"
 $file = "Initialize-CommandLineInterface.ps1"
-$initScript = "$rawContentUrl/$repo/$ref/$file"
-Invoke-RestMethod $initScript | Invoke-Expression
+$scriptUrl = "$rawContentUrl/$repo/$ref/$file"
+Invoke-RestMethod $scriptUrl | Invoke-Expression
 # all done
 ```
 - Run this as current user on a windows machine.
