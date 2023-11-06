@@ -4,9 +4,31 @@ $buckets = @{
 }
 
 Set-StrictMode -Version Latest
+$PSNativeCommandUseErrorActionPreference = $true
+if ($PSNativeCommandUseErrorActionPreference) {
+    # always true, this is a linter workaround
+    $ErrorActionPreference = "Stop"
+    $PSDefaultParameterValues['*:ErrorAction'] = 'Stop'
+}
+function CheckLastExitCode {
+    param ([int[]]$SuccessCodes = @(0))
+
+    if (!$?) {
+        Write-Host "Last CMD failed $LastExitCode" -ForegroundColor Red
+        exit
+    }
+
+    if ($SuccessCodes -notcontains $LastExitCode) {
+        Write-Host "EXE RETURNED EXIT CODE $LastExitCode" -ForegroundColor Red
+        exit
+    }
+}
 
 if (-not (Get-Command 'scoop' -ErrorAction SilentlyContinue)) {
-    Invoke-RestMethod get.scoop.sh | Invoke-Expression
+    $scoop = Invoke-RestMethod get.scoop.sh
+    CheckLastExitCode
+    Invoke-Expression $scoop
+    CheckLastExitCode
 } else {
     Write-Verbose -Verbose "Scoop already installed."
 }
@@ -15,7 +37,10 @@ if (-not (Get-Command 'scoop' -ErrorAction SilentlyContinue)) {
 # scoop install aria2
 # scoop config aria2-enabled true
 
-$currentBuckets = scoop bucket list | ForEach-Object { $_.Name }
+$bucketList = scoop bucket list
+CheckLastExitCode
+$currentBuckets = $bucketList | ForEach-Object { $_.Name }
+CheckLastExitCode
 
 foreach ($bucket in $buckets.GetEnumerator()) {
     $name = $bucket.Key
@@ -24,11 +49,17 @@ foreach ($bucket in $buckets.GetEnumerator()) {
     if ($currentBuckets -contains $name) {
         Write-Verbose -Verbose "Bucket $name already added. Removing..."
         scoop bucket rm $name
+        CheckLastExitCode
     }
     Invoke-Expression "scoop bucket add $name $url"
+    CheckLastExitCode
 }
 
 scoop update
+CheckLastExitCode
 scoop update *
+CheckLastExitCode
 scoop --version
+CheckLastExitCode
 scoop status
+CheckLastExitCode
