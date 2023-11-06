@@ -28,17 +28,17 @@ if ($prefix -eq "") {
     Write-Verbose -Verbose "Using custom prefix $prefix"
 }
 
-$scoop = Invoke-RestMethod "$prefix/Initialize-Scoop.ps1"
+$scoop = Invoke-RestMethod "$prefix/Install-Scoop.ps1"
 CheckLastExitCode
 Invoke-Expression $scoop
 CheckLastExitCode
 
-$charmApplication = Invoke-RestMethod "$prefix/Initialize-CharmApplications.ps1"
+$charmApplication = Invoke-RestMethod "$prefix/Install-CharmApplications.ps1"
 CheckLastExitCode
 Invoke-Expression $charmApplication
 CheckLastExitCode
 
-$developingTodayApplications = Invoke-RestMethod "$prefix/Initialize-DevelopingTodayApplications.ps1"
+$developingTodayApplications = Invoke-RestMethod "$prefix/Install-DevelopingTodayApplications.ps1"
 CheckLastExitCode
 Invoke-Expression $developingTodayApplications
 CheckLastExitCode

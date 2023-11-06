@@ -33,7 +33,7 @@ if (-not (Get-Command 'scoop' -ErrorAction SilentlyContinue)) {
     Write-Verbose -Verbose "Scoop already installed."
 }
 
-# causes ffpmeg errors
+# causes ffpmeg errors # occurred 2023-11 try again after 2024-03
 # scoop install aria2
 # scoop config aria2-enabled true
 
