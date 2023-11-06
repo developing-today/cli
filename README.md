@@ -10,5 +10,10 @@ Invoke-RestMethod $scriptUrl | Invoke-Expression
 ```
 ```
 scoop bucket known | ForEach-Object { scoop bucket add $_ }
+scoop update
+# all done
+```
+```
+scoop update
 # all done
 ```
