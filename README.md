@@ -5,8 +5,15 @@ such as AllUsers or using Winget/Choco?
 
 ```
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-$initScript = "https://raw.githubusercontent.com/developing-today/cli/main/Initialize-CommandLineInterface.ps1"
-Invoke-RestMethod get.scoop.sh | Invoke-Expression
+$rawContentUrl = "https://raw.githubusercontent.com"
+$thisRepo = "developing-today/cli"
+$ref = "main"
+$file = "Initialize-CommandLineInterface.ps1"
+$initScript = "$rawContentUrl/$thisRepo/$ref/$file"
+Invoke-RestMethod $initScript |
+  Invoke-Expression
+scoop --version
+# all done
 ```
 
 run this and you will have
