@@ -1,3 +1,8 @@
+$buckets = @{
+	"developing-today" = "https://github.com/developing-today/scoop-developing-today"
+	"charmbracelet" = "https://github.com/developing-today-forks/scoop-charmbracelet"
+}
+
 Set-StrictMode -Version Latest
 
 if (-not (Get-Command 'scoop' -ErrorAction SilentlyContinue)) {
@@ -10,21 +15,19 @@ scoop install aria2
 
 scoop config aria2-enabled true
 
-# scoop bucket known | ForEach-Object { scoop bucket add $_ }
+scoop bucket known | ForEach-Object { scoop bucket add $_ }
 
-$currentBuckets = scoop bucket list | ForEach-Object { $_.Name }
+$currentBuckets = scoop bucket list | ForEach-Object { $_ }
 
-$buckets = Get-Content .\buckets.json | ConvertFrom-Json
-
-foreach ($property in $buckets.PSObject.Properties) {
-    $name = $property.Name
-    $url = $property.Value
+foreach ($bucket in $buckets.GetEnumerator()) {
+    $name = $bucket.Key
+    $url = $bucket.Value
 
     if ($currentBuckets -contains $name) {
         Write-Verbose -Verbose "Bucket $name already added. Removing..."
         scoop bucket rm $name
     }
-    Invoke-Expression "scoop bucket add $name $url"
+    scoop bucket add $name $url
 }
 
 scoop update
