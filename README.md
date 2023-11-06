@@ -1,6 +1,9 @@
 Run this as current user on a windows machine.
+
 This will enable you have a few different tools.
+
 In time, there may be other alternatives here,
+
 such as AllUsers or using Winget/Choco?
 
 ```
