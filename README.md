@@ -15,5 +15,6 @@ scoop update
 ```
 ```
 scoop update
+scoop update *
 # all done
 ```
