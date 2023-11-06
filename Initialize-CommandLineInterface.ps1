@@ -11,9 +11,9 @@ if (-not (Get-Command 'scoop' -ErrorAction SilentlyContinue)) {
     Write-Verbose -Verbose "Scoop already installed."
 }
 
-scoop install aria2
-
-scoop config aria2-enabled true
+# causes ffpmeg errors
+# scoop install aria2
+# scoop config aria2-enabled true
 
 $currentBuckets = scoop bucket list | ForEach-Object { $_.Name }
 
