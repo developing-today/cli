@@ -26,7 +26,6 @@ function CheckLastExitCode {
 Write-Verbose -Verbose "Installing $($apps.Count) developing-today apps from scoop."
 
 if ($apps.Count -eq 0) {
-    Write-Verbose -Verbose "No apps to install"
     return
 }
 scoop install $($apps -join " ")

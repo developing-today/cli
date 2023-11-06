@@ -37,7 +37,6 @@ function CheckLastExitCode {
 Write-Verbose -Verbose "Installing $($apps.Count) charmbracelet apps from scoop."
 
 if ($apps.Count -eq 0) {
-    Write-Verbose -Verbose "No apps to install"
     return
 }
 
