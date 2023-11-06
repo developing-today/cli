@@ -1,34 +1,11 @@
-$buckets = @{
-	"developing-today" = "https://github.com/developing-today/scoop-developing-today"
-	"charmbracelet" = "https://github.com/developing-today-forks/scoop-charmbracelet"
-}
-
 Set-StrictMode -Version Latest
 
-if (-not (Get-Command 'scoop' -ErrorAction SilentlyContinue)) {
-    Invoke-RestMethod get.scoop.sh | Invoke-Expression
-} else {
-    Write-Verbose -Verbose "Scoop already installed."
+$prefix = "$($env:CLI_PREFIX)"
+
+if ($prefix -eq "") {
+    $prefix = "https://raw.githubusercontent.com/developing-today/cli/main"
 }
 
-# causes ffpmeg errors
-# scoop install aria2
-# scoop config aria2-enabled true
-
-$currentBuckets = scoop bucket list | ForEach-Object { $_.Name }
-
-foreach ($bucket in $buckets.GetEnumerator()) {
-    $name = $bucket.Key
-    $url = $bucket.Value
-
-    if ($currentBuckets -contains $name) {
-        Write-Verbose -Verbose "Bucket $name already added. Removing..."
-        scoop bucket rm $name
-    }
-    Invoke-Expression "scoop bucket add $name $url"
-}
-
-scoop update
-scoop update *
-scoop --version
-scoop status
+Invoke-RestMethod "$prefix/Initialize-Scoop.ps1" | Invoke-Expression
+Invoke-RestMethod "$prefix/Initialize-CharmApplication.ps1" | Invoke-Expression
+Invoke-RestMethod "$prefix/Initialize-DevelopingTodayApplications.ps1" | Invoke-Expression
