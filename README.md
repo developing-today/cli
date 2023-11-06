@@ -1,10 +1,10 @@
 ```
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-$rawContentUrl = "https://raw.githubusercontent.com"
+$baseUrl = "https://raw.githubusercontent.com"
 $repo = "developing-today/cli"
 $ref = "main"
 $file = "Initialize-CommandLineInterface.ps1"
-$scriptUrl = "$rawContentUrl/$repo/$ref/$file"
+$scriptUrl = "$baseUrl/$repo/$ref/$file"
 Invoke-RestMethod $scriptUrl | Invoke-Expression
 # all done
 ```
