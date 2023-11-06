@@ -10,7 +10,7 @@ scoop install aria2
 
 scoop config aria2-enabled true
 
-scoop bucket known | ForEach-Object { scoop bucket add $_ }
+# scoop bucket known | ForEach-Object { scoop bucket add $_ }
 
 $currentBuckets = scoop bucket list | ForEach-Object { $_.Name }
 
@@ -24,7 +24,7 @@ foreach ($property in $buckets.PSObject.Properties) {
         Write-Verbose -Verbose "Bucket $name already added. Removing..."
         scoop bucket rm $name
     }
-    scoop bucket add $name $url
+    Invoke-Expression "scoop bucket add $name $url"
 }
 
 scoop update
