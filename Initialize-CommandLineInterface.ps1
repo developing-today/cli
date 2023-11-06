@@ -25,9 +25,10 @@ foreach ($bucket in $buckets.GetEnumerator()) {
         Write-Verbose -Verbose "Bucket $name already added. Removing..."
         scoop bucket rm $name
     }
-    scoop bucket add $name $url
+    Invoke-Expression "scoop bucket add $name $url"
 }
 
 scoop update
+scoop update *
 scoop --version
 scoop status
