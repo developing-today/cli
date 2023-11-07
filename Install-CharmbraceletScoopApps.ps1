@@ -26,17 +26,19 @@ function CheckLastExitCode {
     if (!$?) {
         if (-not (Test-Path variable://LastExitCode)) {
             $LastExitCode = 1
+            Write-Verbose -Verbose "No LastExitCode found, setting to 1" -ForegroundColor Red
         }
-        Write-Host "Last CMD failed $LastExitCode" -ForegroundColor Red
+        Write-Verbose -Verbose "Last CMD failed $LastExitCode" -ForegroundColor Red
         exit
     }
 
     if (-not (Test-Path variable://LastExitCode)) {
+        Write-Verbose -Verbose "No LastExitCode found, setting to 0" -ForegroundColor Green
         $LastExitCode = 0
     }
 
     if ($SuccessCodes -notcontains $LastExitCode) {
-        Write-Host "EXE RETURNED EXIT CODE $LastExitCode" -ForegroundColor Red
+        Write-Verbose -Verbose "EXE RETURNED EXIT CODE $LastExitCode" -ForegroundColor Red
         exit
     }
 }
