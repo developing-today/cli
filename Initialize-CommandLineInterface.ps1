@@ -12,17 +12,19 @@ function CheckLastExitCode {
     if (!$?) {
         if (-not (Test-Path variable://LastExitCode)) {
             $LastExitCode = 1
+            Write-Verbose -Verbose "No LastExitCode found, setting to 1" -ForegroundColor Red
         }
-        Write-Host "Last CMD failed $LastExitCode" -ForegroundColor Red
+        Write-Verbose -Verbose "Last CMD failed $LastExitCode" -ForegroundColor Red
         exit
     }
 
     if (-not (Test-Path variable://LastExitCode)) {
+        Write-Verbose -Verbose "No LastExitCode found, setting to 0" -ForegroundColor Green
         $LastExitCode = 0
     }
 
     if ($SuccessCodes -notcontains $LastExitCode) {
-        Write-Host "EXE RETURNED EXIT CODE $LastExitCode" -ForegroundColor Red
+        Write-Verbose -Verbose "EXE RETURNED EXIT CODE $LastExitCode" -ForegroundColor Red
         exit
     }
 }
@@ -31,6 +33,7 @@ $prefix = "$($env:CLI_PREFIX)"
 
 if ($prefix -eq "") {
     $prefix = "https://raw.githubusercontent.com/developing-today/cli/main"
+    Write-Verbose -Verbose "Using default prefix $prefix"
 } else {
     Write-Verbose -Verbose "Using custom prefix $prefix"
 }
@@ -40,12 +43,12 @@ CheckLastExitCode
 Invoke-Expression $scoop
 CheckLastExitCode
 
-$charmApplication = Invoke-RestMethod "$prefix/Install-CharmApplications.ps1"
+$charmApps = Invoke-RestMethod "$prefix/Install-CharmApps.ps1"
 CheckLastExitCode
-Invoke-Expression $charmApplication
+Invoke-Expression $charmApps
 CheckLastExitCode
 
-$developingTodayApplications = Invoke-RestMethod "$prefix/Install-DevelopingTodayApplications.ps1"
+$developingTodayApps = Invoke-RestMethod "$prefix/Install-DevelopingTodayApps.ps1"
 CheckLastExitCode
-Invoke-Expression $developingTodayApplications
+Invoke-Expression $developingTodayApps
 CheckLastExitCode
