@@ -2,7 +2,7 @@ $apps = @(
     "charm",
     "confettysh",
     "glow",
-    "gum",
+    "charm-gum",
     "melt",
     "mods",
     "pop",
