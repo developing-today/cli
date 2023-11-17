@@ -43,7 +43,7 @@ function CheckLastExitCode {
     }
 }
 
-Write-Verbose -Verbose "Installing $($apps.Count) charmbracelet apps from scoop."
+Write-Verbose -Verbose "Installing $($apps.Count) charm apps from scoop."
 
 if ($apps.Count -eq 0) {
     return
