@@ -48,7 +48,7 @@ if (-not (Get-Command 'scoop' -ErrorAction SilentlyContinue)) {
 # scoop install aria2
 # scoop config aria2-enabled true
 
-Write-Verbose -Verbose "Getting current scoop bucket list. If you see errors here, try removing the given bucket and running this script again. `scoop bucket rm <bucket>`"
+Write-Verbose -Verbose "Getting current scoop bucket list. If you see errors here, try removing the given bucket and running this script again. `scoop bucket rm <bucket>``"
 
 $bucketList = scoop bucket list
 CheckLastExitCode
