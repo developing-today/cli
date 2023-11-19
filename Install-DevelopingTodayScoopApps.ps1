@@ -1,4 +1,5 @@
 $apps = @(
+  "graph"
 )
 
 Set-StrictMode -Version Latest
