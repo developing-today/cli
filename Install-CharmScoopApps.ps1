@@ -7,7 +7,7 @@ $apps = @(
     "mods",
     "pop",
     "skate",
-    "soft-serve",
+    # "soft-serve", # https://github.com/charmbracelet/scoop-bucket/pull/4
     "vhs",
     "wishlist"
 )
