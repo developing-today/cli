@@ -15,7 +15,6 @@ scoop update
 # all done
 ```
 ```
-scoop update
 scoop update *
 # all done
 ```
