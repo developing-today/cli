@@ -19,7 +19,7 @@ function CheckLastExitCode {
     }
 
     if (-not (Test-Path variable://LastExitCode)) {
-        Write-Verbose -Verbose "No LastExitCode found, setting to 0"
+        # Write-Verbose -Verbose "No LastExitCode found, setting to 0"
         $LastExitCode = 0
     }
 
@@ -43,12 +43,17 @@ CheckLastExitCode
 Invoke-Expression $scoop
 CheckLastExitCode
 
-$charmbraceletScoopApps = Invoke-RestMethod "$prefix/Install-CharmScoopApps.ps1"
+$scoopApps = Invoke-RestMethod "$prefix/Install-ScoopApps.ps1"
+CheckLastExitCode
+Invoke-Expression $scoopApps
+CheckLastExitCode
+
+$charmScoopApps = Invoke-RestMethod "$prefix/Install-CharmScoopApps.ps1"
 CheckLastExitCode
 Invoke-Expression $charmbraceletScoopApps
 CheckLastExitCode
 
-$developingTodayApps = Invoke-RestMethod "$prefix/Install-DevelopingTodayScoopApps.ps1"
+$developingTodayScoopApps = Invoke-RestMethod "$prefix/Install-DevelopingTodayScoopApps.ps1"
 CheckLastExitCode
 Invoke-Expression $developingTodayScoopApps
 CheckLastExitCode
