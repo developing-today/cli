@@ -24,6 +24,7 @@ choco upgrade all -y --accept-eula
 winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
 scoop update
 scoop update *
+scoop update -g *
 pwsh
 update-module -AcceptLicense
 Update-Script -AcceptLicense
