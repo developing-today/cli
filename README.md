@@ -19,3 +19,16 @@ scoop update
 scoop update *
 # all done
 ```
+```
+scoop update
+scoop update *
+choco upgrade all -y --accept-eula
+winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
+pwsh
+update-module
+update-help
+powershell
+update-module
+update-help -uiculture en-us
+# all done
+```
