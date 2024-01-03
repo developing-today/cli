@@ -29,6 +29,6 @@ update-module
 update-help
 powershell
 update-module
-update-help -uiculture en-us
+update-help -UICulture en-US
 # all done
 ```
