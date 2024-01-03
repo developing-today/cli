@@ -25,13 +25,15 @@ winget upgrade --all --include-unknown --accept-source-agreements --accept-packa
 scoop update
 scoop update *
 scoop update -g *
-pwsh
-update-module -AcceptLicense
-Update-Script -AcceptLicense
-update-help
-powershell
-update-module -AcceptLicense
-Update-Script -AcceptLicense
-update-help
+pwsh -command @"
+update-module * -AcceptLicense
+Update-Script * -AcceptLicense
+update-help *
+"@
+powershell -command @"
+update-module * -AcceptLicense
+Update-Script * -AcceptLicense
+update-help *
+"@
 # all done
 ```
