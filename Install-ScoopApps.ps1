@@ -1,6 +1,7 @@
 $apps = @(
     # main
-    "git",
+    # "git", # built-in to scoop install script
+    # "pwsh", # built-in to scoop install script
     # extras
     "windows-terminal"
 )
