@@ -77,10 +77,13 @@ winget upgrade --all --include-unknown --accept-source-agreements --accept-packa
 choco upgrade all -y --accept-eula
 scoop update *
 scoop update -g *
-Update-Help
 Install-PackageProvider -Name "NuGet" -Force
 Register-PSRepository -Default
 Install-Module -Name PSWindowsUpdate -Force
+UsoClient ScanInstallWait
+wuauclt /detectnow /updatenow
+Add-WUServiceManager -MicrosoftUpdate -Confirm:$false
+dism.exe /Online /Cleanup-image /Restorehealth
 Get-WindowsUpdate -MicrosoftUpdate -AcceptAll -Install -AutoReboot
 Reboot-Computer
 '@
