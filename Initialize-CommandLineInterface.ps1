@@ -57,3 +57,8 @@ $developingTodayScoopApps = Invoke-RestMethod "$prefix/Install-DevelopingTodaySc
 CheckLastExitCode
 Invoke-Expression $developingTodayScoopApps
 CheckLastExitCode
+
+wsl --install -d Ubuntu
+
+winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
+winget update --accept-package-agreements --accept-source-agreements --all
