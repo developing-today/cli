@@ -4,6 +4,7 @@ $apps = @(
     # "pwsh", # built-in to scoop install script
     # extras
     "windows-terminal"
+    "wiztree"
 )
 
 Set-StrictMode -Version Latest
