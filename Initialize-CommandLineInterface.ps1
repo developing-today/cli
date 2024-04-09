@@ -57,8 +57,8 @@ $developingTodayScoopApps = Invoke-RestMethod "$prefix/Install-DevelopingTodaySc
 CheckLastExitCode
 Invoke-Expression $developingTodayScoopApps
 CheckLastExitCode
-
-wsl --install -d Ubuntu
+$process0 = Start-Process powershell.exe -ArgumentList "-Command `"wsl --install -d Ubuntu`"" -PassThru
+$process0 | Wait-Process
 
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
 winget update --all --include-unknown --accept-source-agreements --accept-package-agreements
