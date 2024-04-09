@@ -1,4 +1,4 @@
-Set-StrictMode -Version Latest
+eSet-StrictMode -Version Latest
 $PSNativeCommandUseErrorActionPreference = $true
 
 if ($PSNativeCommandUseErrorActionPreference) { # always true, this is a linter workaround
@@ -61,14 +61,22 @@ CheckLastExitCode
 wsl --install -d Ubuntu
 
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
-winget update --accept-package-agreements --accept-source-agreements --all
+winget update --all --include-unknown --accept-source-agreements --accept-package-agreements
+winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
+choco upgrade all -y --accept-eula
 
-Start-Process powershell.exe -ArgumentList "-Command `"Update-Help -Force`""
-Start-Process pwsh.exe -ArgumentList "-Command `"Update-Help -Force`""
-Start-Process powershell.exe -ArgumentList "-Command `"Update-Help -Force`"" -Verb RunAs
-Start-Process pwsh.exe -ArgumentList "-Command `"Update-Help -Force`"" -Verb RunAs
+Start-Process powershell.exe -ArgumentList "-Command `"Update-Help -Force -ErrorAction SilentlyContinue ; update-module * -AcceptLicense ; Update-Script * -AcceptLicense`""
+Start-Process pwsh.exe -ArgumentList "-Command `"Update-Help -Force -ErrorAction SilentlyContinue ; update-module * -AcceptLicense ; Update-Script * -AcceptLicense`""
+Start-Process powershell.exe -ArgumentList "-Command `"Update-Help -Force -ErrorAction SilentlyContinue ; update-module * -AcceptLicense ; Update-Script * -AcceptLicense`"" -Verb RunAs
+Start-Process pwsh.exe -ArgumentList "-Command `"Update-Help -Force -ErrorAction SilentlyContinue ; update-module * -AcceptLicense ; Update-Script * -AcceptLicense`"" -Verb RunAs
 
 $adminScript = @'
+winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
+winget update --all --include-unknown --accept-source-agreements --accept-package-agreements
+winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
+choco upgrade all -y --accept-eula
+scoop update *
+scoop update -g *
 Update-Help
 Install-PackageProvider -Name "NuGet" -Force
 Register-PSRepository -Default
