@@ -2,6 +2,7 @@ $apps = @(
     # main
     # "git", # built-in to scoop install script
     # "pwsh", # built-in to scoop install script
+    "starship",
     # extras
     "windows-terminal"
     "wiztree"
