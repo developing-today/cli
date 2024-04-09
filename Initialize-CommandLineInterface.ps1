@@ -89,4 +89,3 @@ Reboot-Computer
 '@
 $process5 = Start-Process powershell.exe -ArgumentList "-Command `"$adminScript`"" -Verb RunAs
 $process5 | Wait-Process
-
