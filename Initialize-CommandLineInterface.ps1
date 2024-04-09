@@ -63,7 +63,6 @@ $process0 | Wait-Process
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
 winget update --all --include-unknown --accept-source-agreements --accept-package-agreements
 winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
-Register-PSRepository -Default
 Set-PSRepository PSGallery -InstallationPolicy Trusted
 $process1 = Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery -InstallationPolicy Trusted ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script *`"" -PassThru
 $process2 = Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery -InstallationPolicy Trusted ; Update-Help -ErrorAction SilentlyContinue ; update-module *  -AcceptLicense ; Update-Script *  -AcceptLicense`"" -PassThru
