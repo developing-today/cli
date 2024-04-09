@@ -1,5 +1,8 @@
 $apps = @(
-    "git"
+    # main
+    "git",
+    # extras
+    "windows-terminal"
 )
 
 Set-StrictMode -Version Latest
