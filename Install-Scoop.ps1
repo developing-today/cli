@@ -2,6 +2,7 @@ $buckets = @{
 	"developing-today" = "https://github.com/developing-today/scoop-developing-today"
 	"charmbracelet" = "https://github.com/developing-today-forks/scoop-charmbracelet"
 	"charm" = "https://github.com/charmbracelet/scoop-bucket"
+	"extras" = ""
 }
 
 Set-StrictMode -Version Latest
