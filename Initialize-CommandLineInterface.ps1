@@ -63,4 +63,14 @@ wsl --install -d Ubuntu
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
 winget update --accept-package-agreements --accept-source-agreements --all
 
-update-help
+Update-Help
+
+$adminScript = @'
+Update-Help
+Install-PackageProvider -Name "NuGet" -Force
+Register-PSRepository -Default
+Install-Module -Name PSWindowsUpdate -Force
+Get-WindowsUpdate -MicrosoftUpdate -AcceptAll -Install -AutoReboot
+Reboot-Computer
+'@
+Start-Process powershell.exe -ArgumentList "-Command `"$adminScript`"" -Verb RunAs
