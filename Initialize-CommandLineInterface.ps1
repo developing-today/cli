@@ -58,7 +58,7 @@ CheckLastExitCode
 Invoke-Expression $developingTodayScoopApps
 CheckLastExitCode
 $process0 = Start-Process powershell.exe -ArgumentList "-Command `"wsl --install -d Ubuntu`"" -PassThru
-$process0 | Wait-Process
+# $process0 | Wait-Process # just hope it gets done in time
 
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
 winget update --all --include-unknown --accept-source-agreements --accept-package-agreements
