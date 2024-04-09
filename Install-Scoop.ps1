@@ -3,6 +3,7 @@ $buckets = @{
 	"charmbracelet" = "https://github.com/developing-today-forks/scoop-charmbracelet"
 	"charm" = "https://github.com/charmbracelet/scoop-bucket"
 	"extras" = ""
+	"versions" = ""
 }
 
 Set-StrictMode -Version Latest
