@@ -49,6 +49,9 @@ if (-not (Get-Command 'scoop' -ErrorAction SilentlyContinue)) {
 # scoop install aria2
 # scoop config aria2-enabled true
 scoop install git
+scoop update git
+powershell.exe -Command "scoop install pwsh" # https://github.com/ScoopInstaller/Main/issues/3572#issuecomment-1292873053
+powershell.exe -Command "scoop update pwsh" # https://github.com/ScoopInstaller/Main/issues/3572#issuecomment-1292873053
 
 Write-Verbose -Verbose "Getting current scoop bucket list. If you see errors here, try removing the given bucket and running this script again. `scoop bucket rm <bucket>``"
 
