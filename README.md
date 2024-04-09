@@ -1,5 +1,5 @@
 ```
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 $base = "https://raw.githubusercontent.com"
 $repo = "developing-today/cli"
 $ref = "main"
