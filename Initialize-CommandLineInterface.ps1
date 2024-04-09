@@ -65,10 +65,10 @@ winget update --all --include-unknown --accept-source-agreements --accept-packag
 winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
 choco upgrade all -y --accept-eula
 
-Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -Force -ErrorAction SilentlyContinue ; update-module * -Force ; Update-Script * -Force`""
-Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -Force -ErrorAction SilentlyContinue ; update-module * -Force -AcceptLicense ; Update-Script * -Force -AcceptLicense`""
-Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -Force -ErrorAction SilentlyContinue ; update-module *  -Force ; Update-Script * -Force`"" -Verb RunAs
-Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -Force -ErrorAction SilentlyContinue ; update-module * -Force -AcceptLicense ; Update-Script * -Force -AcceptLicense`"" -Verb RunAs
+Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script *`""
+Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module *  -AcceptLicense ; Update-Script *  -AcceptLicense`""
+Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script * `"" -Verb RunAs
+Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * -AcceptLicense ; Update-Script * -AcceptLicense`"" -Verb RunAs
 
 $adminScript = @'
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
