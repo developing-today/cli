@@ -50,3 +50,7 @@ if ($apps.Count -eq 0) {
 
 scoop install $($apps -join " ")
 CheckLastExitCode
+
+# vscode-insiders
+reg import (Join-Path (Join-Path (Get-Item (scoop which code-insiders)).Directory.FullName "..") "install-context.reg")
+reg import (Join-Path (Join-Path (Get-Item (scoop which code-insiders)).Directory.FullName "..") "install-associations.reg")
