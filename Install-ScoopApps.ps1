@@ -7,6 +7,8 @@ $apps = @(
     "vcredist2022",
     "windows-terminal",
     "wiztree"
+    # versions
+    "vscode-insiders",
 )
 
 Set-StrictMode -Version Latest
