@@ -50,7 +50,7 @@ CheckLastExitCode
 
 $charmScoopApps = Invoke-RestMethod "$prefix/Install-CharmScoopApps.ps1"
 CheckLastExitCode
-Invoke-Expression $charmbraceletScoopApps
+Invoke-Expression $charmScoopApps
 CheckLastExitCode
 
 $developingTodayScoopApps = Invoke-RestMethod "$prefix/Install-DevelopingTodayScoopApps.ps1"
