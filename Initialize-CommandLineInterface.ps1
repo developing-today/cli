@@ -63,7 +63,10 @@ wsl --install -d Ubuntu
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
 winget update --accept-package-agreements --accept-source-agreements --all
 
-Update-Help
+Start-Process powershell.exe -ArgumentList "-Command `"Update-Help -Force`""
+Start-Process pwsh.exe -ArgumentList "-Command `"Update-Help -Force`""
+Start-Process powershell.exe -ArgumentList "-Command `"Update-Help -Force`"" -Verb RunAs
+Start-Process pwsh.exe -ArgumentList "-Command `"Update-Help -Force`"" -Verb RunAs
 
 $adminScript = @'
 Update-Help
