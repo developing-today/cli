@@ -62,3 +62,5 @@ wsl --install -d Ubuntu
 
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
 winget update --accept-package-agreements --accept-source-agreements --all
+
+update-help
