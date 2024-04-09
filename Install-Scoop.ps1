@@ -47,6 +47,7 @@ if (-not (Get-Command 'scoop' -ErrorAction SilentlyContinue)) {
 # causes ffpmeg errors # occurred 2023-11 try again after 2024-03
 # scoop install aria2
 # scoop config aria2-enabled true
+scoop install git
 
 Write-Verbose -Verbose "Getting current scoop bucket list. If you see errors here, try removing the given bucket and running this script again. `scoop bucket rm <bucket>``"
 
