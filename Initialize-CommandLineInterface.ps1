@@ -63,11 +63,12 @@ wsl --install -d Ubuntu
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
 winget update --all --include-unknown --accept-source-agreements --accept-package-agreements
 winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
-
-$process1 = Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script *`"" -PassThru
-$process2 = Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module *  -AcceptLicense ; Update-Script *  -AcceptLicense`"" -PassThru
-$process3 = Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script * `"" -Verb RunAs -PassThru
-$process4 = Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * -AcceptLicense ; Update-Script * -AcceptLicense`"" -Verb RunAs -PassThru
+Register-PSRepository -Default
+Set-PSRepository PSGallery -InstallationPolicy Trusted
+$process1 = Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery -InstallationPolicy Trusted ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script *`"" -PassThru
+$process2 = Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery -InstallationPolicy Trusted ; Update-Help -ErrorAction SilentlyContinue ; update-module *  -AcceptLicense ; Update-Script *  -AcceptLicense`"" -PassThru
+$process3 = Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery -InstallationPolicy Trusted ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script * `"" -Verb RunAs -PassThru
+$process4 = Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery -InstallationPolicy Trusted ; Update-Help -ErrorAction SilentlyContinue ; update-module * -AcceptLicense ; Update-Script * -AcceptLicense`"" -Verb RunAs -PassThru
 $process1,$process2,$process3,$process4 | Wait-Process
 
 $adminScript = @'
