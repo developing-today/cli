@@ -64,10 +64,11 @@ winget update Microsoft.AppInstaller --accept-package-agreements --accept-source
 winget update --all --include-unknown --accept-source-agreements --accept-package-agreements
 winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
 
-Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script *`""
-Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module *  -AcceptLicense ; Update-Script *  -AcceptLicense`""
-Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script * `"" -Verb RunAs
-Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * -AcceptLicense ; Update-Script * -AcceptLicense`"" -Verb RunAs
+$process1 = Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script *`"" -PassThru
+$process2 = Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module *  -AcceptLicense ; Update-Script *  -AcceptLicense`"" -PassThru
+$process3 = Start-Process powershell.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * ; Update-Script * `"" -Verb RunAs -PassThru
+$process4 = Start-Process pwsh.exe -ArgumentList "-Command `"Register-PSRepository -Default ; Set-PSRepository PSGallery ; Update-Help -ErrorAction SilentlyContinue ; update-module * -AcceptLicense ; Update-Script * -AcceptLicense`"" -Verb RunAs -PassThru
+$process1,$process2,$process3,$process4 | Wait-Process
 
 $adminScript = @'
 winget update Microsoft.AppInstaller --accept-package-agreements --accept-source-agreements
@@ -86,4 +87,6 @@ dism.exe /Online /Cleanup-image /Restorehealth
 Get-WindowsUpdate -MicrosoftUpdate -AcceptAll -Install -AutoReboot
 Reboot-Computer
 '@
-Start-Process powershell.exe -ArgumentList "-Command `"$adminScript`"" -Verb RunAs
+$process5 = Start-Process powershell.exe -ArgumentList "-Command `"$adminScript`"" -Verb RunAs
+$process5 | Wait-Process
+
