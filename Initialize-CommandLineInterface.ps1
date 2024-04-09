@@ -1,4 +1,4 @@
-eSet-StrictMode -Version Latest
+Set-StrictMode -Version Latest
 $PSNativeCommandUseErrorActionPreference = $true
 
 if ($PSNativeCommandUseErrorActionPreference) { # always true, this is a linter workaround
