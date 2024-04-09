@@ -4,7 +4,8 @@ $apps = @(
     # "pwsh", # built-in to scoop install script
     "starship",
     # extras
-    "windows-terminal"
+    "vcredist2022",
+    "windows-terminal",
     "wiztree"
 )
 
