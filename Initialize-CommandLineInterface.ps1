@@ -85,7 +85,7 @@ wuauclt /detectnow /updatenow
 Add-WUServiceManager -MicrosoftUpdate -Confirm:$false
 dism.exe /Online /Cleanup-image /Restorehealth
 Get-WindowsUpdate -MicrosoftUpdate -AcceptAll -Install -AutoReboot
-Reboot-Computer
+Restart-Computer
 '@
 $process5 = Start-Process powershell.exe -ArgumentList "-Command `"$adminScript`"" -Verb RunAs
 $process5 | Wait-Process
